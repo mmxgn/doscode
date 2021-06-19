@@ -1,0 +1,6 @@
+C:
+CD\BUILD 
+MAIN
+echo %1
+PAUSE
+EXIT
