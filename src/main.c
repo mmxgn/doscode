@@ -17,18 +17,17 @@ void main() {
     int i=0;
     union REGS regs;
     
+    // Set video mode to 0x13 (256 Color 320x240)
     regs.h.ah = 0x00;
     regs.h.al = 0x13;
     int86(0x10, &regs, &regs);
+
     printf("Hello, World!\n");
 
-    regs.h.ah = 0x0C;
-    regs.h.al = 0x3;
-    
-    for(i=0; i<100; i++){
-        regs.x.cx = i;
-        regs.x.dx = 2*i;
-        int86(0x10, &regs, &regs);
-    }
-    
+    // Uncomment below to return to text mode, I leave it commented
+    // because otherwise "Hello, World!" will dissapear. 
+    regs.h.ah = 0x00;
+    regs.h.al = 0x03;
+    int86(0x10, &regs, &regs);
+
 }
